@@ -1,4 +1,5 @@
 ﻿using LibraryConsoleApp.DAL.Entities;
+using LibraryConsoleApp.DAL.Interfaces;
 
 namespace LibraryConsoleApp.DAL.Repositories
 {

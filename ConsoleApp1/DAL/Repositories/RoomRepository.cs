@@ -1,7 +1,7 @@
 ﻿using LibraryConsoleApp.DAL.Entities;
-using LibraryConsoleApp.DAL.Repositories;
+using LibraryConsoleApp.DAL.Interfaces;
 
-namespace LibraryConsoleApp.BLL.Implementations
+namespace LibraryConsoleApp.DAL.Repositories
 {
     public class RoomRepository : Repository<Room>
     {

@@ -1,7 +1,6 @@
-﻿using LibraryConsoleApp.DAL.Interfaces;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 
-namespace LibraryConsoleApp.DAL.Repositories
+namespace LibraryConsoleApp.DAL.Interfaces
 {
     public abstract class Repository<T> : IRepository<T>
     {
