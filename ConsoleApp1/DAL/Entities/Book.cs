@@ -7,10 +7,8 @@
         public string Publisher { get; set; }
         public int PublicationYear { get; set; }
 
-        public Book(List<string> authors, string title, string isbn, string publisher, int numberOfPages, int publicationYear)
+        public Book(List<string> authors, long shelfId, string title, string isbn, string publisher, int numberOfPages, int publicationYear, bool isAvailable) : base(shelfId, title, isbn, isAvailable)
         {
-            Title = title;
-            ISBN = isbn;
             Authors = authors;
             Publisher = publisher;
             PublicationYear = publicationYear;

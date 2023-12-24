@@ -10,6 +10,14 @@ namespace LibraryConsoleApp.DAL.Entities
         public string ISBN { get; protected set; }
         public bool IsAvailable { get; protected set; }
         public virtual Shelf Shelf { get; set; }
+
+        public LibraryItem(long shelfId, string title, string isbn, bool isAvailable)
+        {
+            ShelfId = shelfId;
+            Title = title;
+            ISBN = isbn;
+            IsAvailable = isAvailable;
+        }
         public abstract void Borrow();
         public abstract void Return();
 

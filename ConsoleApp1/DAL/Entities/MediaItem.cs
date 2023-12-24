@@ -8,10 +8,8 @@ namespace LibraryConsoleApp.DAL.Entities
         public List<Track> Tracks { get; set; }
         public int Capacity { get; set; }
 
-        public MediaItem(List<Track> tracks, int capacity, string title, string isbn)
+        public MediaItem(List<Track> tracks, long shaftId, int capacity, string title, string isbn, bool isAvailable) : base(shaftId, title, isbn, isAvailable)
         {
-            ISBN = isbn;
-            Title = title;
             Tracks = tracks;
             Capacity = capacity;
         }
