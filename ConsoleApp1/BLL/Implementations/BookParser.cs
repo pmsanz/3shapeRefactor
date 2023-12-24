@@ -58,7 +58,7 @@ namespace LibraryConsoleApp.BLL.Implementations
 
                 if (authors.Count != 0 && title != null && publisher != null && publicationYear > 0 && pages > 0)
                 {
-                    books.Add(new Book(authors, title, Guid.NewGuid().ToString(), publisher, pages, publicationYear));
+                    books.Add(new Book(authors, 0, title, Guid.NewGuid().ToString(), publisher, pages, publicationYear, false));
                 }
             }
 
