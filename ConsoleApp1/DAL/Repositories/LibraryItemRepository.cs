@@ -3,7 +3,7 @@ using LibraryConsoleApp.DAL.Interfaces;
 
 namespace LibraryConsoleApp.DAL.Repositories
 {
-    public class ItemRepository : Repository<LibraryItem>
+    public class LibraryItemRepository : Repository<LibraryItem>
     {
         public override LibraryItem? GetByIdOrDefault(long id)
         {

@@ -3,6 +3,7 @@
     public interface IRepository<T>
     {
         List<T> Items { get; }
+        public List<T> GetAll();
         public void Add(T item);
         public T? GetByIdOrDefault(long id);
         public T GetRandomItem();

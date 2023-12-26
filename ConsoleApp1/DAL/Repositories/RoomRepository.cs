@@ -20,7 +20,7 @@ namespace LibraryConsoleApp.DAL.Repositories
             if (item.RoomId == 0)
                 throw new InvalidOperationException("Room id can't be 0.");
             if (item.Number == 0)
-                throw new InvalidOperationException("Room number should be greather than 0.");
+                throw new InvalidOperationException("Room number should be greater than 0.");
         }
     }
 }

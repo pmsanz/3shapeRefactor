@@ -4,7 +4,7 @@ namespace LibraryConsoleApp.DAL.Interfaces
 {
     public abstract class Repository<T> : IRepository<T>
     {
-        public List<T> Items { get; protected set; } = new List<T>();
+        public List<T> Items { get; set; } = new List<T>();
         protected abstract void CheckConstraints(T item);
         public virtual void Add(T item)
         {
@@ -40,6 +40,9 @@ namespace LibraryConsoleApp.DAL.Interfaces
 
         public abstract long GetLastKeyIdPlusOne();
 
-
+        public List<T> GetAll()
+        {
+            return Items;
+        }
     }
 }

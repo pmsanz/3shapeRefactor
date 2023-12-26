@@ -32,6 +32,8 @@ namespace LibraryConsoleApp.BLL.Implementations
             }
             for (int i = 0; i < sanitizedList.Count; i++)
             {
+                if (string.IsNullOrEmpty(sanitizedList[i]))
+                    continue;
                 string query = sanitizedList[i];
                 query = query.Replace(@"\&", "&");
                 query = query.Trim().Remove(0, 1);

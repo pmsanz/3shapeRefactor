@@ -12,7 +12,7 @@ namespace LibraryConsoleApp.DAL.Repositories
 
         public override long GetLastKeyIdPlusOne()
         {
-            return Items.Max(x => x.RowId) + 1;
+            return Items.Max(x => x.ShelfId) + 1;
         }
 
         protected override void CheckConstraints(Shelf item)
@@ -22,7 +22,7 @@ namespace LibraryConsoleApp.DAL.Repositories
             if (item.RowId == 0)
                 throw new InvalidOperationException("RowId id can't be 0.");
             if (item.Number == 0)
-                throw new InvalidOperationException("Shelf number should be greather than 0.");
+                throw new InvalidOperationException("Shelf number should be greater than 0.");
 
         }
 

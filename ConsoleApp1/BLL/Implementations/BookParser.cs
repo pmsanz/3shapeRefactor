@@ -7,6 +7,9 @@ namespace LibraryConsoleApp.BLL.Implementations
     {
         public List<Book> Read(string input)
         {
+            if (string.IsNullOrEmpty(input))
+                throw new ArgumentNullException("input argument cannot be empty.");
+
             List<Book> books = new List<Book>();
             string[] bookData = input.Split(new string[] { "Book:" }, StringSplitOptions.RemoveEmptyEntries);
 

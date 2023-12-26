@@ -1,17 +1,18 @@
 ﻿using LibraryConsoleApp.BLL.Interfaces;
 using LibraryConsoleApp.DAL.Entities;
+using LibraryConsoleApp.DAL.Interfaces;
 
 namespace LibraryConsoleApp.BLL.Implementations
 {
-    public class BookSearcher : ISearcher<Book>
+    public class BookSearcher : IQuerySearcheable<Book>, LibraryItemSearcher<Book>
 
     {
-        public List<Book> Items { get; set; }
+        public IRepository<Book> BookRepository { get; set; }
         private IQuerySanitizer _sanitizer;
-        public BookSearcher()
+        public BookSearcher(IRepository<Book> books, IQuerySanitizer sanitizer)
         {
-            _sanitizer = new QuerySanitizerImplementation();
-            Items = new List<Book>();
+            _sanitizer = sanitizer;
+            BookRepository = books;
         }
 
         public List<Book> Find(string searchString)
@@ -25,7 +26,7 @@ namespace LibraryConsoleApp.BLL.Implementations
                 List<Book> termResults = new List<Book>();
                 string searchTermNormalized = term.Trim().ToLower();
 
-                foreach (Book book in Items)
+                foreach (Book book in BookRepository.Items)
                 {
                     if (MatchItem(book, searchTermNormalized))
                     {
@@ -41,11 +42,22 @@ namespace LibraryConsoleApp.BLL.Implementations
         }
         public bool MatchItem(Book book, string searchTerm)
         {
+            if (string.IsNullOrEmpty(searchTerm))
+                return false;
+
             return book.Title.ToLower().Contains(searchTerm) ||
-                 book.Authors.Any(author => author.ToLower().Contains(searchTerm)) ||
-                 book.Publisher.ToLower().Contains(searchTerm) ||
-                 book.PublicationYear.ToString().Contains(searchTerm);
+                     book.Authors.Any(author => author.ToLower().Contains(searchTerm)) ||
+                     book.Publisher.ToLower().Contains(searchTerm) ||
+                     book.PublicationYear.ToString().Contains(searchTerm);
+
         }
 
+        public Book? SearchItemByISBNorDefault(string ISBN)
+        {
+            if (string.IsNullOrEmpty(ISBN))
+                throw new ArgumentException("ISBN cannot be null or empty.", nameof(ISBN));
+
+            return BookRepository.Items.FirstOrDefault(x => x.ISBN == ISBN);
+        }
     }
 }
